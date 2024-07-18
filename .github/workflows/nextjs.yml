@@ -25,7 +25,6 @@ jobs:
         run: |
           git config user.email "actions@users.noreply.github.com"
           git config user.name "GitHub Actions"
-          echo 'yourdomain.com' > CNAME  # Optional: Add a custom domain
 
           git add .
           git commit -m "Deploying to GitHub Pages"
