@@ -1,36 +1,30 @@
-name: Deploy Next.js site to Pages
+name: Deploy to GitHub Pages
+
 on:
   push:
-    branches: ["main"]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+    branches:
+      - main # Adjust if your main branch is named differently
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build with Next.js
-        run: npm run build && npm run export
+      - name: Install dependencies and build
+        working-directory: frontend
+        run: |
+          npm install
+          npm run build
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        working-directory: frontend
+        run: |
+          git config --global user.email "actions@users.noreply.github.com"
+          git config --global user.name "GitHub Actions"
+          echo 'yourdomain.com' > CNAME  # Optional: Add a custom domain
+
+          git add .
+          git commit -m "Deploying to GitHub Pages"
+          git push --force --quiet "https://${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git" main:gh-pages
