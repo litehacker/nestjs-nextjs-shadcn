@@ -20,12 +20,10 @@ jobs:
 
       - name: Deploy to GitHub Pages
         working-directory: frontend
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.email "actions@users.noreply.github.com"
           git config user.name "GitHub Actions"
 
           git add .
           git commit -m "Deploying to GitHub Pages"
-          git push --force --quiet "https://${GITHUB_TOKEN}@github.com/${{ github.repository }}.git" main:gh-pages
+          git push --force --quiet "https://${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git" main:gh-pages
