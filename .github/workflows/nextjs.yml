@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - main # Adjust if your main branch is named differently
-
+permissions:
+  contents: write
 jobs:
   deploy:
     runs-on: ubuntu-latest
