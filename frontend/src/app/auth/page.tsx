@@ -27,7 +27,7 @@ export default function Component() {
               <CarouselItem>
                 <div className="flex h-full flex-col items-center justify-center gap-4 p-8">
                   <Image
-                    src="https:dummyimage.com/400x300"
+                    src="https://dummyimage.com/400x300"
                     width={400}
                     height={300}
                     alt="Onboarding Image 1"
@@ -45,7 +45,7 @@ export default function Component() {
               <CarouselItem>
                 <div className="flex h-full flex-col items-center justify-center gap-4 p-8">
                   <Image
-                    src="https:dummyimage.com/400x300"
+                    src="https://dummyimage.com/400x300"
                     width="400"
                     height="300"
                     alt="Onboarding Image 2"
@@ -63,7 +63,7 @@ export default function Component() {
               <CarouselItem>
                 <div className="flex h-full flex-col items-center justify-center gap-4 p-8">
                   <Image
-                    src="https:dummyimage.com/400x300"
+                    src="https://dummyimage.com/400x300"
                     width="400"
                     height="300"
                     alt="Onboarding Image 3"
